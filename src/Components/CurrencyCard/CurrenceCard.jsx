@@ -7,7 +7,6 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 
 import {faHryvnia} from "@fortawesome/free-solid-svg-icons";
 
-
 import {useState} from "react";
 import {useEffect} from "react";
 
@@ -33,7 +32,7 @@ const CurrencyCard = (props) => {
         },
         series: [
             {
-                data: [24,25,29,32,33,35.5],
+                data: [24,25,26,29,31,32,33,35.5],
                 type: 'line',
                 smooth: true,
                 color: "#2c7be5",
@@ -54,7 +53,7 @@ const CurrencyCard = (props) => {
             <div className="d-flex flex-between-center mb-3">
                 <div className="d-flex align-items-center">
                     <div className="icon-item icon-item-sm bg-soft-primary shadow-none me-2 bg-soft-primary">
-                        <h5><FontAwesomeIcon icon={props.data.logo}/></h5>
+                        <h4><FontAwesomeIcon icon={props.data.logo}/></h4>
                     </div>
                     <h4>{props.data.title}</h4>
                 </div>

@@ -23,7 +23,7 @@ const SelectDate = () => {
     return (
         <div className="row align-items-center g-3">
             <div className="col-auto">
-                <h6 className="text-700 mb-0">Дані на дату: </h6>
+                <h6 className="text-700 mb-0">Дані за період: </h6>
             </div>
             <div className="col-md-auto position-relative">
                 <Flatpickr options={options}
