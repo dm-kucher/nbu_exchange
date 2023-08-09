@@ -1,0 +1,51 @@
+/*.navbar {*/
+/*    --falcon-navbar-padding-x: 1rem;*/
+/*    --falcon-navbar-padding-y: 0.5rem;*/
+/*    --falcon-navbar-color: var(--falcon-navbar-light-color);*/
+/*    --falcon-navbar-hover-color: var(--falcon-navbar-light-hover-color);*/
+/*    --falcon-navbar-disabled-color: var(--falcon-navbar-light-disabled-color);*/
+/*    --falcon-navbar-active-color: var(--falcon-navbar-light-active-color);*/
+/*    --falcon-navbar-brand-padding-y: -0.046rem;*/
+/*    --falcon-navbar-brand-margin-end: 1rem;*/
+/*    --falcon-navbar-brand-font-size: 1.728rem;*/
+/*    --falcon-navbar-brand-color: var(--falcon-navbar-light-brand-color);*/
+/*    --falcon-navbar-brand-hover-color: var(--falcon-navbar-light-brand-color);*/
+/*    --falcon-navbar-nav-link-padding-x: 0.5rem;*/
+/*    --falcon-navbar-toggler-padding-y: 0.25rem;*/
+/*    --falcon-navbar-toggler-padding-x: 0.75rem;*/
+/*    --falcon-navbar-toggler-font-size: 1.2rem;*/
+/*    --falcon-navbar-toggler-icon-bg: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%239da9bb' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M0 6h30M0 14h30M0 22h30'/%3E%3C/svg%3E");*/
+/*    --falcon-navbar-toggler-border-color: var(--falcon-navbar-light-toggler-border-color);*/
+/*    --falcon-navbar-toggler-border-radius: 0.25rem;*/
+/*    --falcon-navbar-toggler-focus-width: 0;*/
+/*    --falcon-navbar-toggler-transition: box-shadow 0.15s ease-in-out;*/
+/*    position: relative;*/
+/*    display: -webkit-box;*/
+/*    display: -ms-flexbox;*/
+/*    display: flex;*/
+/*    -ms-flex-wrap: wrap;*/
+/*    flex-wrap: wrap;*/
+/*    -webkit-box-align: center;*/
+/*    -ms-flex-align: center;*/
+/*    align-items: center;*/
+/*    -webkit-box-pack: justify;*/
+/*    -ms-flex-pack: justify;*/
+/*    justify-content: space-between;*/
+/*    padding:var(--falcon-navbar-padding-y) var(--falcon-navbar-padding-x)*/
+/*}*/
+
+/*.navbar-top {*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*    font-size: .8333333333rem;*/
+/*    font-weight: 600;*/
+/*    margin-left: -1rem;*/
+/*    margin-right: -1rem;*/
+/*    z-index: 1020;*/
+/*    background-image: none;*/
+/*    min-height:4.3125rem*/
+/*}*/
+
+/*.navbar-glass {*/
+/*    background-color: var(--falcon-bg-navbar-glass);*/
+/*}*/
