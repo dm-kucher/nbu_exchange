@@ -1,4 +1,4 @@
-import CurrenceCard from "../CurrencyCard/CurrenceCard";
+import CurrencyCard from "../CurrencyCard/CurrencyCard";
 import CurrencyList from "../../Data/CurrencyList";
 
 const MainCurrencyCardsList = () => {
@@ -8,7 +8,7 @@ const MainCurrencyCardsList = () => {
             <div className="card-body">
                 <div className="row">
                     {
-                    CurrencyList.map(el => <CurrenceCard data={el}/>)
+                    CurrencyList.map(el => <CurrencyCard data={el}/>)
                     }
                 </div>
             </div>
