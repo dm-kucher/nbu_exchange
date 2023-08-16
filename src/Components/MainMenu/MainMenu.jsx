@@ -1,3 +1,7 @@
+import {Link, Route, Routes} from "react-router-dom";
+import Main from "../Content/Main/Main";
+import CurrencyHistory from "../Content/CurrencyHistory/CurrencyHistory";
+
 const MainMenu = () => {
     return (
         <main className="main" id="top">
@@ -12,40 +16,31 @@ const MainMenu = () => {
                         <div class="collapse navbar-collapse scrollbar py-lg-2">
                             <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
                                 <li className="nav-item dropdown">
-
-                                    <a className="nav-link" href="#" role="button" data-bs-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false" id="dashboards">Головна</a>
-
+                                    <Link className="nav-link" to="/">Головна</Link>
                                 </li>
 
                                 <li className="nav-item dropdown">
-
-                                    <a className="nav-link" href="#" role="button" data-bs-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false" id="dashboards">Історія</a>
-
+                                    <Link className="nav-link" to="/currency-history">Історія</Link>
                                 </li>
 
                                 <li className="nav-item dropdown">
-
-                                    <a className="nav-link" href="#" role="button" data-bs-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false" id="dashboards">Аналітика</a>
-
+                                    <Link className="nav-link" to="/analytics">Аналітика</Link>
                                 </li>
 
                                 <li className="nav-item dropdown">
-
-                                    <a className="nav-link" href="#" role="button" data-bs-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false" id="dashboards">Курс валют в банках</a>
-
+                                    <Link className="nav-link" to="/rates-in-banks">Курс валют в банках</Link>
                                 </li>
 
                             </ul>
+
                         </div>
                     </div>
 
                 </nav>
             </div>
+
         </main>
+
     );
 }
 

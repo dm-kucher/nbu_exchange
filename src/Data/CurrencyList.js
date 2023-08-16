@@ -5,17 +5,17 @@ import {faPoundSign} from "@fortawesome/free-solid-svg-icons";
 let currencyList = [
     {
         id: "usd",
-        title: "USD",
+        code: "USD",
         logo : faDollar
     },
     {
         id: "euro",
-        title: "EURO",
+        code: "EUR",
         logo : faEuro
     },
     {
         id: "gbp",
-        title: "GBP",
+        code: "GBP",
         logo : faPoundSign
     }
 ]

@@ -3,7 +3,10 @@ import crmlinechart from './img/crm-line-chart.png';
 import SelectDate from "../../SelectDate/SelectDate";
 import MainCurrencyCardsList from "../../MainCurrencyCardsList/MainCurrencyCardsList";
 
+import CurrencyRates from "../../CurrencyRates/CurrencyRates";
+
 const Main = () => {
+
     return (
         <div className="container">
            <div className="content">
@@ -33,6 +36,11 @@ const Main = () => {
                    <div className="col-lg-12 col-xxl-9">
                        <MainCurrencyCardsList/>
                    </div>
+               </div>
+               <div className="row mb-3 g-3">
+                    <div className="col-lg-12 col-xxl-9">
+                        <CurrencyRates/>
+                    </div>
                </div>
            </div>
         </div>
