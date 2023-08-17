@@ -3,9 +3,9 @@ import "flatpickr/dist//themes/dark.css";
 import {Ukrainian} from "flatpickr/dist/l10n/uk.js";
 import {useDispatch, useSelector} from "react-redux";
 import {setRatesDate} from "../../Data/Slices/RatesDateSlice";
-import {setRates} from "../../Data/Slices/RatesSlice";
-import RatesList from "../../Data/TempDataRates";
-import axios from "axios";
+// import {setRates} from "../../Data/Slices/RatesSlice";
+// import RatesList from "../../Data/TempDataRates";
+// import axios from "axios";
 
 
 const DateInput = ({value, defaultValue, inputRef, ...props}) => {
@@ -32,7 +32,7 @@ const SelectDate = () => {
 
     const onChangeRatesDate = (selectedDate) => {
         dispatch(setRatesDate(selectedDate));
-        dispatch(setRates(RatesList));
+        // dispatch(setRates(RatesList));
         // axios.get(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=20230815&json`)
         //     .then(response => {
         //             dispatch(setRates(response.data))
