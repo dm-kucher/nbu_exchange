@@ -9,7 +9,8 @@ COPY ./Dockerfile /app
 
 RUN npm install
 COPY ./src /app
+COPY ./public /app
 
-WORKDIR /app/src
+
 
 RUN npm run build
