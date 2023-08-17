@@ -11,6 +11,4 @@ RUN npm install
 COPY ./src /app
 COPY ./public /app
 
-
-
 RUN npm run build

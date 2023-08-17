@@ -2,8 +2,8 @@ version: "3.4"
 services:
   app:
     build: .
-#    volumes:
-#      - .:/client-app
+    volumes:
+      - .:/app
     ports:
       - "3000:3000"
     image: app/react
