@@ -1,6 +1,6 @@
-import crmbarchart from './img/crm-bar-chart.png';
-import crmlinechart from './img/crm-line-chart.png';
-import SelectDate from "../../SelectDate/SelectDate";
+import crmbarchart from '../img/crm-bar-chart.png';
+import crmlinechart from '../img/crm-line-chart.png';
+import SelectDate from "./SelectDate/SelectDate";
 import MainCurrencyCardsList from "../../MainCurrencyCardsList/MainCurrencyCardsList";
 
 import CurrencyRates from "../../CurrencyRates/CurrencyRates";

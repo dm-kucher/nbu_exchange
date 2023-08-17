@@ -2,7 +2,8 @@ import Flatpickr from 'react-flatpickr'
 import "flatpickr/dist//themes/dark.css";
 import {Ukrainian} from "flatpickr/dist/l10n/uk.js";
 import {useDispatch, useSelector} from "react-redux";
-import {setRatesDate} from "../../Data/Slices/RatesDateSlice";
+// import {setRatesDate} from "../../Data/Slices/RatesDateSlice";
+import {setRatesDate} from "../../../../Data/Slices/RatesDateSlice";
 // import {setRates} from "../../Data/Slices/RatesSlice";
 // import RatesList from "../../Data/TempDataRates";
 // import axios from "axios";
