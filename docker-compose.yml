@@ -10,4 +10,6 @@ services:
       - "3000"
     image: app/react
     container_name: app_container
-    command: npm start
+    command: >
+      sh -c "npm i react-native-scripts --save &&
+              npm start"
