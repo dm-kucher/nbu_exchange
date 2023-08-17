@@ -16,7 +16,7 @@ import moment from "moment/moment";
 const CurrencyCard = (props) => {
 
     let rDate = useSelector(state => state.RatesDate.rDate);
-    let [currency, setCurrency] = useState([]);
+    let [currency, setCurrency] = useState({rate: 0});
 
     let rDateString = moment(rDate).format("YYYYMMDD");
 
