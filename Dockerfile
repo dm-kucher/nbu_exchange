@@ -8,6 +8,6 @@ COPY ./package.json /app
 COPY ./Dockerfile /app
 
 RUN npm install
-COPY ./src /app/src
+COPY ./src /app
 
 RUN npm run build
