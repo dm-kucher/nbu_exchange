@@ -2,11 +2,9 @@ import Flatpickr from 'react-flatpickr'
 import "flatpickr/dist//themes/dark.css";
 import {Ukrainian} from "flatpickr/dist/l10n/uk.js";
 import {useDispatch, useSelector} from "react-redux";
-// import {setRatesDate} from "../../Data/Slices/RatesDateSlice";
+
 import {setRatesDate} from "../../../../Data/Slices/RatesDateSlice";
-// import {setRates} from "../../Data/Slices/RatesSlice";
-// import RatesList from "../../Data/TempDataRates";
-// import axios from "axios";
+
 
 
 const DateInput = ({value, defaultValue, inputRef, ...props}) => {
@@ -23,7 +21,7 @@ const SelectDate = () => {
         mode: 'single',
         altInputClass: 'hide',
         dateFormat: 'd F Y',
-        minDate: new Date('01-01-2018'),
+        minDate: new Date('01-01-2000'),
         locale: {...Ukrainian, rangeSeparator: " - ",},
         rangeSeparator: " - ",
         defaultDate: useSelector(state => state.RatesDate.rDate)

@@ -2,6 +2,9 @@ import Flatpickr from 'react-flatpickr'
 import "flatpickr/dist//themes/dark.css";
 import {Ukrainian} from "flatpickr/dist/l10n/uk.js";
 
+import {useDispatch, useSelector} from "react-redux";
+import {setPeriod} from "../../../../Data/Slices/CurrencyHistory";
+
 const DateInput = ({value, defaultValue, inputRef, ...props}) => {
 
     return (<input {...props} defaultValue={defaultValue} ref={inputRef}
@@ -16,14 +19,18 @@ const SelectDate = () => {
         mode: 'range',
         altInputClass: 'hide',
         dateFormat: 'd M Y',
-        minDate: new Date('01-01-2018'),
+        minDate: new Date('01-01-2000'),
         locale: {...Ukrainian, rangeSeparator: " - ",},
         rangeSeparator: " - ",
-        // defaultDate: useSelector(state => state.RatesDate.rDate)
+        defaultDate: useSelector(state => state.CurrencyHistory.period)
     }
 
-    const onChangeRatesDate = (selectedDate) => {
+    const dispatch = useDispatch()
 
+    const onChangePeriod = (selectedDates) => {
+        if (selectedDates instanceof Array && selectedDates.length === 2) {
+            dispatch(setPeriod(selectedDates));
+        }
     }
 
     return (
@@ -34,7 +41,7 @@ const SelectDate = () => {
             <div className="col-md-7 position-relative">
                 <Flatpickr options={options}
                            onChange={(selectedDates, dateStr, instance) => {
-                               onChangeRatesDate(selectedDates[0])
+                               onChangePeriod(selectedDates)
                            }}
                            render={
                                ({defaultValue, value, ...props}, ref) => {
