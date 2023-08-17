@@ -1,9 +1,7 @@
 version: "3.4"
 services:
   app:
-    build:
-      context: .
-      dockerfile: client-app/Dockerfile
+    build: .
 #    volumes:
 #      - .:/client-app
     ports:
