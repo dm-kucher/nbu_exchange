@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: client-app/Dockerfile
-    volumes:
-      - .:/client-app
+#    volumes:
+#      - .:/client-app
     ports:
       - "3000:3000"
     image: app/react
