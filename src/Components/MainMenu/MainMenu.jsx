@@ -13,8 +13,8 @@ const MainMenu = () => {
                             <h1>Курс валют НБУ</h1>
                         </div>
                         <hr className="my-2 d-none d-lg-block"/>
-                        <div class="collapse navbar-collapse scrollbar py-lg-2">
-                            <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
+                        <div className="collapse navbar-collapse scrollbar py-lg-2">
+                            <ul className="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link" to="/">Головна</Link>
                                 </li>

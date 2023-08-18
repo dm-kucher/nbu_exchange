@@ -8,8 +8,7 @@ const initialState = {
     rates: []
 }
 
-export const CurrencyHistory = createSlice(
-    {
+export const CurrencyHistory = createSlice({
         name: 'CurrencyHistory',
         initialState,
         reducers: {
@@ -20,7 +19,8 @@ export const CurrencyHistory = createSlice(
                 return {...state, period: action.payload}
             },
             setRates: (state, action) => {
-                return {...state, rates: action.payload}
+                // state.rates = action.payload
+                return {...state, rates: [...action.payload]}
             }
         }
     })

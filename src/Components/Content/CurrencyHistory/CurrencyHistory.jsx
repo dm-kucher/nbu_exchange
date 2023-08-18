@@ -10,7 +10,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import axios from "axios";
 
-import {setRates, setCurrency} from "../../../Data/Slices/CurrencyHistory";
+import {setCurrency} from "../../../Data/Slices/CurrencyHistory";
+import {setRates} from "../../../Data/Slices/CurrencyHistory";
+import moment from "moment";
 
 const SelectCurrency = () => {
 
@@ -24,7 +26,7 @@ const SelectCurrency = () => {
     return (
         <select className="form-select" aria-label="Default select example" value={currencyValue}
                 onChange={el => onSelectCurrency(el.target.value)}>
-            <option selected="">Виберіть валюту</option>
+            <option >Виберіть валюту</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
@@ -76,41 +78,23 @@ const CurrencyChart = () => {
 const TableRow = (props) => {
     return (
         <tr className="border-bottom border-200">
-            <td className="align-middle font-sans-serif fw-medium text-nowrap">Долар США</td>
-            <td className="align-middle text-center">30.01.2022</td>
-            <td className="align-middle text-center">28.9879</td>
+            <td className="align-middle font-sans-serif fw-medium text-nowrap">{props.data.txt}</td>
+            <td className="align-middle text-center">{props.data.exchangedate}</td>
+            <td className="align-middle text-center">{props.data.rate}</td>
         </tr>
     )
 }
 
-const CurrencyRatesTable = () => {
+const getDaysArray = function(start, end) {
+        for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
+            arr.push(new Date(dt));
+        }
+        return arr;
+    };
 
-    let currencyValue = useSelector(state => state.CurrencyHistory.currency);
-    let currencyPeriod = useSelector(state => state.CurrencyHistory.period);
+const CurrencyRatesTable = (props) => {
 
-    const dispatch = useDispatch();
-
-    const url = "https://bank.gov.ua/NBU_Exchange/exchange_site?start=20220115&end=20220131&valcode=USD&sort=exchangedate&order=asc&json";
-
-    // let headers = {
-    //     'Access-Control-Allow-Credentials':true,
-    //     'Access-Control-Allow-Origin': '*',
-    //     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-    // }
-
-    useEffect(() => {
-            if (currencyValue) {
-                axios.get(url)
-                    .then(response => {
-                            dispatch(setRates(response.data));
-                        }
-                    )
-                // .catch(function (error) {
-                //     console.log(error);
-                // })
-            }
-        }, [currencyValue, currencyPeriod, dispatch]
-    );
+    let currencyRates = useSelector(state => state.CurrencyHistory.rates);
 
     return (
         <div className="card overflow-hidden">
@@ -128,15 +112,10 @@ const CurrencyRatesTable = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        <TableRow/>
+                        {
+                            currencyRates.map(el => <TableRow data={el}/>)
+                        }
                         </tbody>
-                        {/*<tfoot className="bg-dark">*/}
-                        {/*    <tr className="text-700 fw-bold bg-100">*/}
-                        {/*        <td></td>*/}
-                        {/*        <td></td>*/}
-                        {/*        <td></td>*/}
-                        {/*    </tr>*/}
-                        {/*</tfoot>*/}
                     </table>
                 </div>
             </div>
@@ -145,6 +124,36 @@ const CurrencyRatesTable = () => {
 }
 
 const CurrencyHistory = () => {
+
+    let dateArray = []
+    let ratesArray= []
+
+    let currencyValue = useSelector(state => state.CurrencyHistory.currency);
+    let currencyPeriod = useSelector(state => state.CurrencyHistory.period);
+    // let currencyRates = useSelector(state => state.CurrencyHistory.rates);
+
+    let daylist = getDaysArray(currencyPeriod[0], currencyPeriod[1]);
+    daylist.map((v)=> dateArray.push(moment(v).format("YYYYMMDD")))
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+            if (currencyValue) {
+
+                dateArray.map( (date) => {
+                    axios.get(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=${currencyValue}&date=${date}&json`)
+                        .then(response => {
+                                ratesArray.push(response.data[0]);
+                                if (ratesArray.length === dateArray.length){
+                                    dispatch(setRates(ratesArray))}
+                            }
+                        )
+                 }) //dateArray.map()
+            }
+        }, [currencyValue, currencyPeriod]
+    );
+
+    // console.log(ratesArray)
 
     return (
         <div className="container">
