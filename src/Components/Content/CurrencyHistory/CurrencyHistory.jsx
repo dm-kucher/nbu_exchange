@@ -7,7 +7,7 @@ import ReactECharts from 'echarts-for-react';
 
 import {useDispatch, useSelector} from "react-redux";
 
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 import {setCurrency} from "../../../Data/Slices/CurrencyHistory";
@@ -19,17 +19,33 @@ const SelectCurrency = () => {
     const dispatch = useDispatch()
     let currencyValue = useSelector(state => state.CurrencyHistory.currency)
 
+    const [currencyArray, setCurrencyArray] = useState([])
+
     const onSelectCurrency = (value) => {
         dispatch(setCurrency(value));
     }
+
+    useEffect( () => {
+
+        axios.get("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json")
+            .then(response => {
+                    setCurrencyArray(response.data)
+                }
+            )
+
+        }, []
+    )
 
     return (
         <select className="form-select" aria-label="Default select example" value={currencyValue}
                 onChange={el => onSelectCurrency(el.target.value)}>
             <option>Виберіть валюту</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
+            {
+                currencyArray.map(el => {return(<option value={el.cc}>{el.txt}</option>)})
+            }
+            {/*<option value="USD">USD</option>*/}
+            {/*<option value="EUR">EUR</option>*/}
+            {/*<option value="GBP">GBP</option>*/}
         </select>
     )
 }
@@ -186,7 +202,7 @@ const CurrencyHistory = () => {
                                     <img className="ms-n4 d-md-none d-lg-block"
                                          src={crmlinechart} alt="" width="150"/>
                                 </div>
-                                <div className="col-md-auto p-3">
+                                <div className="col-md-3 p-3">
                                     <SelectCurrency/>
                                 </div>
                                 <div className="col-md-5 p-3">
