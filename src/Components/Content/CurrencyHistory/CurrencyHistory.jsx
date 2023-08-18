@@ -26,7 +26,7 @@ const SelectCurrency = () => {
     return (
         <select className="form-select" aria-label="Default select example" value={currencyValue}
                 onChange={el => onSelectCurrency(el.target.value)}>
-            <option >Виберіть валюту</option>
+            <option>Виберіть валюту</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
@@ -36,6 +36,16 @@ const SelectCurrency = () => {
 
 const CurrencyChart = () => {
 
+    let dataArray = []
+    let ratesArrey = []
+
+    let currencyRates = useSelector(state => state.CurrencyHistory.rates);
+
+    currencyRates.map(el => {
+        dataArray.push(el.exchangedate);
+        ratesArrey.push(el.rate)
+    })
+
     const options = {
         // grid: {
         //     bottom: 250,
@@ -44,7 +54,8 @@ const CurrencyChart = () => {
         xAxis: {
             show: true,
             type: 'category',
-            data: ['12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23',]
+            data: dataArray
+            // data: ['12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23', '12.02.23',]
         },
         yAxis: {
             type: 'value',
@@ -52,7 +63,8 @@ const CurrencyChart = () => {
         },
         series: [
             {
-                data: [21, 24, 25, 26, 29, 30, 31, 33, 35.5, 36.7],
+                // data: [21, 24, 25, 26, 29, 30, 31, 33, 35.5, 36.7],
+                data: ratesArrey,
                 type: 'line',
                 smooth: true,
                 color: "#2c7be5",
@@ -85,12 +97,12 @@ const TableRow = (props) => {
     )
 }
 
-const getDaysArray = function(start, end) {
-        for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
-            arr.push(new Date(dt));
-        }
-        return arr;
-    };
+const getDaysArray = function (start, end) {
+    for (var arr = [], dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
+        arr.push(new Date(dt));
+    }
+    return arr;
+};
 
 const CurrencyRatesTable = (props) => {
 
@@ -126,29 +138,30 @@ const CurrencyRatesTable = (props) => {
 const CurrencyHistory = () => {
 
     let dateArray = []
-    let ratesArray= []
+    let ratesArray = []
 
     let currencyValue = useSelector(state => state.CurrencyHistory.currency);
     let currencyPeriod = useSelector(state => state.CurrencyHistory.period);
     // let currencyRates = useSelector(state => state.CurrencyHistory.rates);
 
     let daylist = getDaysArray(currencyPeriod[0], currencyPeriod[1]);
-    daylist.map((v)=> dateArray.push(moment(v).format("YYYYMMDD")))
+    daylist.map((v) => dateArray.push(moment(v).format("YYYYMMDD")))
 
     const dispatch = useDispatch();
 
     useEffect(() => {
             if (currencyValue) {
 
-                dateArray.map( (date) => {
+                dateArray.map((date) => {
                     axios.get(`https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=${currencyValue}&date=${date}&json`)
                         .then(response => {
                                 ratesArray.push(response.data[0]);
-                                if (ratesArray.length === dateArray.length){
-                                    dispatch(setRates(ratesArray))}
+                                if (ratesArray.length === dateArray.length) {
+                                    dispatch(setRates(ratesArray))
+                                }
                             }
                         )
-                 }) //dateArray.map()
+                }) //dateArray.map()
             }
         }, [currencyValue, currencyPeriod]
     );

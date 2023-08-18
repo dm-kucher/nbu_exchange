@@ -20,6 +20,18 @@ export const CurrencyHistory = createSlice({
             },
             setRates: (state, action) => {
                 // state.rates = action.payload
+                action.payload.sort(
+                    (a, b) => {
+                        if ( a.exchangedate < b.exchangedate ){
+                            return -1;
+                          }
+                          if ( a.exchangedate > b.exchangedate ){
+                            return 1;
+                          }
+                          return 0;
+                        }
+                )
+
                 return {...state, rates: [...action.payload]}
             }
         }
