@@ -92,18 +92,22 @@ const CurrencyRatesTable = () => {
 
     const url = "https://bank.gov.ua/NBU_Exchange/exchange_site?start=20220115&end=20220131&valcode=USD&sort=exchangedate&order=asc&json";
 
-    const headers = {"Content-Type": "multipart/form-data", Accept: "application/json"}
+    // let headers = {
+    //     'Access-Control-Allow-Credentials':true,
+    //     'Access-Control-Allow-Origin': '*',
+    //     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+    // }
 
     useEffect(() => {
             if (currencyValue) {
-                axios.get(url, {headers})
+                axios.get(url)
                     .then(response => {
                             dispatch(setRates(response.data));
                         }
                     )
-                    // .catch(function (error) {
-                    //     console.log(error);
-                    // })
+                // .catch(function (error) {
+                //     console.log(error);
+                // })
             }
         }, [currencyValue, currencyPeriod, dispatch]
     );
